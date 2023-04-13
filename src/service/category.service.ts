@@ -3,8 +3,9 @@ import { InjectDataSource, InjectRepository } from "@nestjs/typeorm";
 import { Category } from "src/entity/Category";
 import { CategoryRepository } from "src/repository/CategoryRepository";
 import { DataSource } from "typeorm";
+import { ICategoryService } from "./ICategory.servive";
 
-export class CategoryService{
+export class CategoryService implements ICategoryService{
 
     /**
      *
@@ -13,6 +14,11 @@ export class CategoryService{
         @InjectRepository(Category)
         private categoryRepository:CategoryRepository,
         @InjectDataSource() private dataSource: DataSource){}
+
+        
+    updateCategory(category: Category): Promise<Category> {
+        throw new Error("Method not implemented.");
+    }
 
         //Méthode de récupération de la liste des Category
         public findAllCategory(): Promise<Category[]> {
